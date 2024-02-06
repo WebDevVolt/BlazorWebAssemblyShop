@@ -1,0 +1,25 @@
+﻿#carouselExampleSlidesOnly {
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: auto; /* Center the carousel */
+}
+
+.carousel-caption {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff; /* Text color */
+}
+
+    .carousel-caption h1 {
+        font-size: 2.5rem; /* Adjust the font size as needed */
+        margin-bottom: 10px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }

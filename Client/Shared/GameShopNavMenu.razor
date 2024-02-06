@@ -1,0 +1,41 @@
+﻿@inject ICategoryService CategoryService
+@inject NavigationManager NavigationManager;
+<div class="top-row ps-3 navbar navbar-dark navbar-toggler-wrapper">
+    <div class="container-fluid">
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-nav">
+        <div class="ms-2 me-2">
+            <a href="@NavigationManager.BaseUri"><img class="img-fluid mt-2 logo" src="/logo.png" /></a>
+        </div>
+        @foreach (var category in CategoryService.Categories)
+        {
+            <div class="nav-item px-2">
+                <NavLink class="nav-link" href="@category.Url">
+                    <i class="@GetIconForCategory(category.Name) oi"></i>
+                </NavLink>
+            </div>
+        }
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CategoryService.GetCategories();
+    }
+}

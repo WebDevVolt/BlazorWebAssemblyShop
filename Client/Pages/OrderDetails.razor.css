@@ -1,0 +1,49 @@
+﻿/* Add your custom styles here */
+
+.order-details-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-image {
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 5px;
+}
+
+.product-details {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.quantity {
+    color: #6c757d; /* Bootstrap secondary color */
+    margin-bottom: 10px;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745; /* Bootstrap success color */
+}
+
+.order-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 15px;
+}

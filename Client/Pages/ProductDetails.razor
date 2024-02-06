@@ -1,0 +1,36 @@
+﻿@page "/product/{id:int}"
+
+@if (product == null)
+{
+    <span>@message</span>
+}
+else
+{
+    <div class="row product-container">
+        <div class="text-center col-md-4 mb-4">
+            <img class="img-fluid rounded product-image" src="@product.ImageUrl" alt="@product.Title" />
+        </div>
+        <div class="col-md-8 product-details">
+            <h3 class="product-title">@product.Title</h3>
+            <div class="price-container">
+                @if (product.SalePrice > 0)
+                {
+                    <h6 class="salePrice">
+                        $@product.SalePrice
+                    </h6>
+                }
+                <h6 class="regularPrice ms-3">
+                    $@product.Price
+                </h6>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success add-to-cart-btn" @onclick="() => AddToCart(product.Id)">
+                    <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp; Add To Cart
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="text-body product-description">
+        <p class="mb-4">@product.Description</p>
+    </div>
+}

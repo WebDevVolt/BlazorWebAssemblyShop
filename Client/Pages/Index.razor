@@ -1,0 +1,13 @@
+﻿@page "/"
+@page "/{categoryUrl}"
+@page "/search/{searchText}"
+@inject NavigationManager NavigationManager;
+
+<PageTitle>GameZone</PageTitle>
+
+@if (NavigationManager.BaseUri == NavigationManager.Uri)
+{
+    <Slider />
+}
+
+<ProductList />

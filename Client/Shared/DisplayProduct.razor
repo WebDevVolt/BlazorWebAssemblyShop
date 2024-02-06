@@ -1,0 +1,26 @@
+﻿@if (Products != null && Products.Count() > 0)
+{
+    @foreach (var product in Products)
+    {
+        <div class="col-md-3 mb-2">
+            <a href="/product/@product.Id" class="text-decoration-none">
+                <div class="card border shadow">
+                    <img class="card-img-top img-thumbnail imgSpecs rounded img-fluid" src="@product.ImageUrl" alt="@product.Title">
+                    <div class="card-body text-center">
+                        <h6 class="card-title mb-3">@product.Title</h6>
+                        <div class="d-flex justify-content-center mb-3">
+                            @if (product.SalePrice > 0)
+                            {
+                                <h6 class="salePrice mb-0 me-3">$@product.SalePrice</h6>
+                            }
+                            <h6 class="@GetStyleForPrice(product) mb-0">$@product.Price</h6>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+}
+
+
+

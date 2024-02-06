@@ -1,0 +1,33 @@
+﻿@page "/orders"
+
+<h3>Orders</h3>
+
+@if(orders == null)
+{
+    <span>Loading your orders...</span>
+}
+else if(orders.Count() <= 0)
+{
+    <spas>You have no orders yet.</spas>
+}
+else
+{
+    foreach(var order in orders)
+    {
+        <div class="container">
+            <div class="order-container">
+                <div>
+                    <img src="@order.ProductImageUrl" class="img-fluid order-image" />
+                </div>
+                <div class="order-details">
+                    <h4 class="order-title">@order.Prodcut</h4>
+                    <span class="order-date">@order.OrderDate</span>
+                    <a href="orders/@order.Id" class="show-more-link">Show more...</a>
+                </div>
+                <div class="order-price">
+                    @order.TotalPrice
+                </div>
+            </div>
+        </div>
+    }
+}

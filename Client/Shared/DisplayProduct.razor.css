@@ -1,0 +1,38 @@
+﻿.imgSpecs {
+    max-height: 300px;
+    object-fit: fill;
+}
+
+/*.card:hover {
+    transform: scale(1.1);
+}*/
+
+.card-title {
+    color: black !important;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.a{
+    color: green !important;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px; /* Adjust the height as needed */
+}
+
+.salePrice {
+    color: #e44d26; /* Sale price color */
+    font-weight: bold;
+}

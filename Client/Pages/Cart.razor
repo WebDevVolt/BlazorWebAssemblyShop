@@ -1,0 +1,63 @@
+﻿@page "/cart"
+
+<PageTitle>Shopping Cart</PageTitle>
+
+@if (cartProducts == null || cartProducts.Count == 0)
+{
+    <span>@message</span>
+}
+else if (OrderPlaced)
+{
+   <span>Thank you for your order! You can check your orders <a href="orders">here</a>.</span> 
+}
+else
+{
+    <div class="container mt-5">
+        <div class="cart-container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8 items-section">
+                    <h3 class="mb-4">Items in Cart</h3>
+                    @foreach (var item in cartProducts)
+                    {
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-12 col-md-2">
+                                <img src="@item.ImageUrl" class="img-thumbnail img-fluid" alt="Product Image">
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <h5><a href="/product/@item.ProductId">@item.ProductTitle</a></h5>
+                                <span>
+                                    Price: <b>$@(item.SalePrice)</b>
+                                </span>
+                            </div>
+                            <div class="col-12 col-md-2 d-flex align-items-center">
+                                <input type="number" value="@item.Quantity"
+                                       @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, item))"
+                                       class="form-control form-control-sm me-2" min="1" />
+
+                                <button class="btn custom-trash-btn" @onclick="@(() => RemoveProductFromCart(item.ProductId))">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-12 col-lg-4 summary-section">
+                    <div class="border p-3">
+                        <h5>Cart Summary</h5>
+                        <p>Items: @cartProducts.Sum(i => i.Quantity)</p>
+                        <p>Total: $@(cartProducts.Sum(p => p.SalePrice * p.Quantity)) </p>
+                        <p>Shipping: Free</p>
+                        <hr>
+                        <p><strong>Total Cost: $@cartProducts.Sum(p => p.SalePrice * p.Quantity)</strong></p>
+                        <div class="text-center">
+                            <button @onclick="PlaceOrder" class="btn alert-success">Place Order</button>
+@*                             <a href="Checkout" class="btn btn-success">
+                                <span class="oi oi-credit-card"></span>&nbsp; Proceed to Checkout
+                            </a> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

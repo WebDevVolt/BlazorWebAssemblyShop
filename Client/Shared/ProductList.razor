@@ -1,0 +1,37 @@
+﻿@if (ProductService.Products == null || ProductService.Products.Count == 0)
+{
+    <span>@ProductService.Message</span>
+}
+else
+{
+    var productCount = ProductService.Products.Count();
+    if (productCount > 0)
+    {
+        var groupedProductByCategory = GetGroupedProductByCategory();
+
+        @foreach (var productGroup in groupedProductByCategory)
+        {
+            <h4>@GetCategoryName(productGroup)</h4>
+            <div class="row mt-3">
+                @if (NavigationManager.BaseUri == NavigationManager.Uri)
+                {
+                    <DisplayProduct Products="@productGroup.Take(4)" />
+
+                }
+                else
+                {
+                    <DisplayProduct Products="@productGroup" />
+                }
+
+                @if (productGroup.Count() > 4 && NavigationManager.BaseUri == NavigationManager.Uri)
+                {
+                    <div class="text-center mt-2">
+                        <button type="button" class="btn btn-primary btn-sm " @onclick="@(() => ViewMore(@productGroup.FirstOrDefault()))">View More</button>
+                    </div>
+                }
+
+            </div>
+            <hr class="mb-3" />
+        }
+    }
+}
