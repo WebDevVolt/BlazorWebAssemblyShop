@@ -1,0 +1,1 @@
+This project covers the basics of Blazor WebAssembly, including creating components, defining routes, and handling user input. You can extend this project further by adding more components, implementing additional functionality, or styling the UI.
